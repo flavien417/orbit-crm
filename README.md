@@ -11,6 +11,8 @@ A self-hosted personal CRM to keep track of friends, acquaintances, and contacts
 - **Dashboard** — see upcoming check-ins, overdue contacts, and recent activity at a glance
 - **Filter contacts** — filter by relationship type and/or industry
 - **Dark mode** — full dark/light mode support
+- **Bulk import** — mass import contacts from any CSV or Excel file
+
 
 ## Requirements
 
