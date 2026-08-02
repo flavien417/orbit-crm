@@ -3,6 +3,7 @@ import { createServer } from "http";
 import { storage } from "./storage";
 import { insertContactSchema, insertInteractionSchema, insertReminderSchema } from "@shared/schema";
 import { z } from "zod";
+import { importRouter } from "./importRouter";
 
 // Default tag lists (used as initial values if no custom list saved)
 const DEFAULT_CONNECTION_TAGS = [
@@ -17,6 +18,8 @@ const DEFAULT_INDUSTRY_TAGS = [
 ];
 
 export function registerRoutes(httpServer: ReturnType<typeof createServer>, app: Express) {
+  app.use("/api/import", importRouter);
+
 
   // ── Contacts ──────────────────────────────────────────────────────────────
   app.get("/api/contacts", (_req, res) => {

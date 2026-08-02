@@ -8,9 +8,10 @@ import { formatDistanceToNow, parseISO, differenceInDays } from "date-fns";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Plus, Search, Users, Filter, X } from "lucide-react";
+import { Plus, Search, Users, Filter, X, Upload } from "lucide-react";
 import AddContactDialog from "@/components/AddContactDialog";
 import AddReminderDialog from "@/components/AddReminderDialog";
+import ImportDialog from "@/components/ImportDialog";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue
 } from "@/components/ui/select";
@@ -34,6 +35,7 @@ export default function Contacts() {
   const [filterRelationship, setFilterRelationship] = useState<string>("all");
   const [filterIndustry, setFilterIndustry] = useState<string>("all");
   const [addOpen, setAddOpen] = useState(false);
+  const [importOpen, setImportOpen] = useState(false);
 
   // Check-in reminder auto-dialog state
   const [checkInOpen, setCheckInOpen] = useState(false);
@@ -74,10 +76,16 @@ export default function Contacts() {
           <h1 className="text-xl font-semibold">Contacts</h1>
           <p className="text-sm text-muted-foreground mt-0.5">{contacts.length} people in your network</p>
         </div>
-        <Button size="sm" onClick={() => setAddOpen(true)} data-testid="button-add-contact">
-          <Plus size={16} className="mr-1.5" />
-          Add contact
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button size="sm" variant="outline" onClick={() => setImportOpen(true)} data-testid="button-bulk-import">
+            <Upload size={16} className="mr-1.5" />
+            Bulk import
+          </Button>
+          <Button size="sm" onClick={() => setAddOpen(true)} data-testid="button-add-contact">
+            <Plus size={16} className="mr-1.5" />
+            Add contact
+          </Button>
+        </div>
       </div>
 
       {/* Filters */}
@@ -225,6 +233,8 @@ export default function Contacts() {
           })}
         </div>
       )}
+
+      <ImportDialog open={importOpen} onClose={() => setImportOpen(false)} />
 
       <AddContactDialog
         open={addOpen}

@@ -19,7 +19,7 @@ A self-hosted personal CRM to keep track of friends, acquaintances, and contacts
 ## Getting Started
 
 ```bash
-git clone https://github.com/FlavienPMoise/orbit-crm.git
+git clone https://github.com/YOUR_USERNAME/orbit-crm.git
 cd orbit-crm
 npm install
 npm run build
@@ -72,4 +72,3 @@ systemctl --user enable --now orbit-crm
 - **Backend:** Express.js
 - **Database:** SQLite via Drizzle ORM
 - **Build:** Vite + esbuild
-
