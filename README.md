@@ -39,6 +39,24 @@ npm install
 npm run dev
 ```
 
+## Upgrading (existing installs)
+
+If you already have Orbit installed, updating is safe and non-destructive — your database lives at `~/orbit-crm.db` outside the repo, so it's never touched by a pull or rebuild.
+
+```bash
+git pull
+npm install
+npm run build
+```
+
+Then restart the server. If you run it manually, stop the old process (`Ctrl+C`) and run `npm start` again. If you use the optional systemd auto-start:
+
+```bash
+systemctl --user restart orbit-crm
+```
+
+No database migration is needed — data carries over automatically.
+
 ## Data
 
 Your database is stored at `~/orbit-crm.db` (your home directory). It persists across restarts and updates — just don't delete that file.
